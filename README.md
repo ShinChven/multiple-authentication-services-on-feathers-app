@@ -167,7 +167,7 @@ const authenticateClients = authenticate({
 
 export const authenticateHook = async (ctx: HookContext) => {
   try {
-    const token = ctx.params.headers.authorization;
+    const token = ctx.params?.authentication?.accessToken;
     const payload = jwt.decode(token);
     // look for role in payload, 
     // so that we can know which authenticate hook handles this token.
