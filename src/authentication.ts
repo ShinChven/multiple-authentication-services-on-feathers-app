@@ -87,8 +87,7 @@ export const authenticateHook = async (ctx: HookContext) => {
   try {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    const {headers = {}} = ctx.params;
-    const token = headers.authorization;
+    const token = ctx.params?.authentication?.accessToken;
     const payload = jwt.decode(token);
     // look for role in payload,
     // so that we can know which authenticate hook handles this token.
